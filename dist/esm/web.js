@@ -51,13 +51,15 @@ export class CapacitorGoogleMapsWeb extends WebPlugin {
         }
         return '';
     }
-    async importGoogleLib(apiKey) {
+    async importGoogleLib(apiKey, region, language) {
         if (this.gMapsRef === undefined) {
             const lib = await import('@googlemaps/js-api-loader');
             const loader = new lib.Loader({
                 apiKey: apiKey !== null && apiKey !== void 0 ? apiKey : '',
                 version: 'weekly',
                 libraries: ['places'],
+                language,
+                region,
             });
             const google = await loader.load();
             this.gMapsRef = google.maps;
@@ -282,7 +284,7 @@ export class CapacitorGoogleMapsWeb extends WebPlugin {
     }
     async create(_args) {
         console.log(`Create map: ${_args.id}`);
-        await this.importGoogleLib(_args.apiKey);
+        await this.importGoogleLib(_args.apiKey, _args.region, _args.language);
         this.maps[_args.id] = {
             map: new window.google.maps.Map(_args.element, Object.assign({}, _args.config)),
             element: _args.element,

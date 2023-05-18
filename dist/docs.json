@@ -741,6 +741,20 @@
           "docs": "Destroy and re-create the map instance if a map with the supplied id already exists",
           "complexTypes": [],
           "type": "boolean | undefined"
+        },
+        {
+          "name": "region",
+          "tags": [],
+          "docs": "The region parameter alters your application to serve different map tiles or bias the application (such as biasing geocoding results towards the region).\n\nOnly available for web.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "language",
+          "tags": [],
+          "docs": "The language parameter affects the names of controls, copyright notices, driving directions, and control labels, as well as the responses to service requests.\n\nOnly available for web.",
+          "complexTypes": [],
+          "type": "string | undefined"
         }
       ]
     },
